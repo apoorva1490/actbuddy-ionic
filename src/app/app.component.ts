@@ -19,6 +19,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Settings } from '../providers/providers';
+import { UserData } from '../providers/user-data';
+import { ConferenceData } from '../providers/conference-data';
 
 import { TranslateService } from '@ngx-translate/core'
 
@@ -61,7 +63,14 @@ export class MyApp {
     { title: 'Search', component: SearchPage }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService, 
+  platform: Platform, 
+  settings: Settings, 
+  private config: Config, 
+  statusBar: StatusBar, 
+  splashScreen: SplashScreen,
+  public userData: UserData, 
+  public confData: ConferenceData) {
 
     this.initTranslate();
 

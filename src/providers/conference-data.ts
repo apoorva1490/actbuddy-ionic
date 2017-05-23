@@ -19,7 +19,7 @@ export class ConferenceData {
     if (this.data) {
       return Observable.of(this.data);
     } else {
-      return this.http.get('assets/data/data.json')
+      return this.http.get('../assets/data/data.json')
         .map(this.processData);
     }
   }
@@ -49,8 +49,8 @@ export class ConferenceData {
             });
           }
 
-          if (session.tracks) {
-            session.tracks.forEach(track => {
+          if (session.categories) {
+            session.categories.forEach(track => {
               if (this.data.tracks.indexOf(track) < 0) {
                 this.data.tracks.push(track);
               }
@@ -109,7 +109,7 @@ export class ConferenceData {
     // if any of the sessions tracks are not in the
     // exclude tracks then this session passes the track test
     let matchesTracks = false;
-    session.tracks.forEach(trackName => {
+    session.categories.forEach(trackName => {
       if (excludeTracks.indexOf(trackName) === -1) {
         matchesTracks = true;
       }

@@ -10,12 +10,10 @@ import { AlertController, App, ItemSliding, List, ModalController, LoadingContro
  * on Ionic pages and navigation.
  */
 
-
-import { ConferenceData } from '../../providers/conference-data';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { UserData } from '../../providers/user-data';
-
+import { ConferenceData } from '../../providers/conference-data';
 
 
 @IonicPage()
@@ -37,6 +35,7 @@ export class SchedulePage {
   shownSessions: any = [];
   groups = [];
   confDate: string;
+  abc: any;
 
   constructor(
     public alertCtrl: AlertController,
@@ -138,6 +137,20 @@ export class SchedulePage {
     // now present the alert on top of all other content
     alert.present();
   }
+
+  get Anotherdate(){
+    console.log('get called', this.abc);
+    return this.abc;
+  }
+  setDate(date) {
+    this.Anotherdate = date;
+    return this.Anotherdate;
+  }
+  set Anotherdate(date){
+    console.log(date);
+    this.abc = new Date(date).getTime();
+  }
+
 
   openSocial(network, fab) {
     let loading = this.loadingCtrl.create({

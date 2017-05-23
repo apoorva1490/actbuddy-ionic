@@ -20,6 +20,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { SchedulePage } from '../pages/schedule/schedule';
+import { SessionDetailPage } from '../pages/session-detail/session-detail';
 
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
@@ -30,6 +32,8 @@ import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { UserData } from '../providers/user-data';
+import { ConferenceData } from '../providers/conference-data';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -78,7 +82,7 @@ let pages = [
   TutorialPage,
   WelcomePage,
   SchedulePage,
-  SessionDetailsPage
+  SessionDetailPage
 ];
 
 export function declarations() {
@@ -98,8 +102,10 @@ export function providers() {
     GoogleMaps,
     SplashScreen,
     StatusBar,
+    ConferenceData,
+    UserData,
 
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
+    { provide: Settings, Storage, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];

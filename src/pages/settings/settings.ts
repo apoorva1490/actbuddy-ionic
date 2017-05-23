@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
  * to enable the user to customize settings for the app.
  *
  */
-@Component({
+@Component({ 
   selector: 'page-settings',
   templateUrl: 'settings.html'
 })
