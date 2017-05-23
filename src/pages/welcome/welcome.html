@@ -1,0 +1,68 @@
+<ion-content scroll="false">
+  <div class="splash-bg"></div>
+  <!--<div class="splash-info">
+    <div class="splash-logo"></div>
+    <div class="splash-intro">
+      {{ 'WELCOME_INTRO' | translate }}
+    </div>
+  </div>-->
+  <form #loginForm="ngForm" novalidate>
+    <ion-list>
+
+      <!--<ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+
+      
+      Want to use a Username instead of an Email? Here you go:-->
+
+      <ion-item>
+        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.username" name="username" #username="ngModel" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="username.valid || submitted == false" color="danger" padding-left>
+				 Username is required
+			</p>
+      <ion-item>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" #password="ngModel" required></ion-input>
+      </ion-item>
+      <p [hidden]="password.valid || submitted == false" color="danger" padding-left>
+				Password is required
+			</p>
+       </ion-list>
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button (click)="doLogin(loginForm)" type="submit" block color="primary">{{ 'LOGIN_BUTTON' | translate }}</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block color="light" (click)="signup()" class="signup">{{ 'SIGNUP' | translate }}</button>
+        </ion-col>
+      </ion-row>
+      <div>
+        <ion-label large>Login with:</ion-label>
+        <ion-row responsive-sm>
+          <ion-col>
+            <button block ion-button icon-left>
+       <ion-icon name="logo-facebook"></ion-icon>
+       Facebook
+       </button>
+          </ion-col>
+          <ion-col>
+            <button block ion-button icon-left>
+       <ion-icon name="logo-google"></ion-icon>
+       Google
+       </button>
+          </ion-col>
+          <ion-col>
+            <button block ion-button icon-left>
+       <ion-icon name="logo-twitter"></ion-icon>
+       Twitter
+       </button>
+          </ion-col>
+        </ion-row>
+      </div>
+  </form>
+</ion-content>
