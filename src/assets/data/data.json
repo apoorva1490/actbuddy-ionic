@@ -68,42 +68,42 @@
   "speakers": [
     {
       "name": "Arcade",
-      "profilePic": "img/categories/arcade sports.svg",
+      "profilePic": "assets/img/categories/arcadesports.svg",
       "twitter": "ionicframework",
       "about": "Burt is a Bear.",
       "location": "Everywhere"
     },
     {
       "name": "Ball",
-      "profilePic": "img/categories/ball sports.svg",
+      "profilePic": "assets/img/categories/ballsports.svg",
       "twitter": "ionicframework",
       "about": "Charlie is a Cheetah.",
       "location": "Everywhere"
     },
     {
       "name": "Dance",
-      "profilePic": "img/categories/dance sports.svg",
+      "profilePic": "assets/img/categories/dancesports.svg",
       "twitter": "ionicframework",
       "about": "Donald is a Duck.",
       "location": "Everywhere"
     },
     {
       "name": "Raquet",
-      "profilePic": "img/categories/racket sports.svg",
+      "profilePic": "assets/img/categories/racketsports.svg",
       "twitter": "ionicframework",
       "about": "Eva is an Eagle.",
       "location": "Everywhere"
     },
     {
       "name": "Track",
-      "profilePic": "img/categories/track sports.svg",
+      "profilePic": "assets/img/categories/tracksports.svg",
       "twitter": "ionicframework",
       "about": "Ellie is an Elephant.",
       "location": "Everywhere"
     },
     {
       "name": "Water",
-      "profilePic": "img/categories/water sports.svg",
+      "profilePic": "assets/img/categories/watersports.svg",
       "twitter": "ionicframework",
       "about": "Gino is a Giraffe.",
       "location": "Everywhere"

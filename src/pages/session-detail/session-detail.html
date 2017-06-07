@@ -12,10 +12,23 @@
   </h4>
 
   <p>
-    {{session.timeStart}} - {{session.timeEnd}}
-  </p>
+   Time : {{session.timeStart}} - {{session.timeEnd}}
+   </p>
+   <p> Location: {{session.location}}
+   </p>
 
-  <p>{{session.location}}</p>
-
-  <p>{{session.description}}</p>
+      <div>
+        <ion-row responsive-sm>
+          <ion-col>
+            <button block ion-button icon-left>
+       Change
+       </button>
+          </ion-col>
+          <ion-col>
+            <button block ion-button icon-left>
+       Cancel
+       </button>
+          </ion-col>
+        </ion-row>
+        </div>
 </ion-content>

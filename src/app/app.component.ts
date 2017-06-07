@@ -17,6 +17,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { CategoryDetailPage } from '../pages/category-detail/category-detail';
 
 import { Settings } from '../providers/providers';
 import { UserData } from '../providers/user-data';

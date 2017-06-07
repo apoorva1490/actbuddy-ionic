@@ -22,7 +22,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SessionDetailPage } from '../pages/session-detail/session-detail';
-
+import { CategoryDetailPage } from '../pages/category-detail/category-detail';
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/settings';
@@ -82,7 +82,8 @@ let pages = [
   TutorialPage,
   WelcomePage,
   SchedulePage,
-  SessionDetailPage
+  SessionDetailPage,
+  CategoryDetailPage
 ];
 
 export function declarations() {
