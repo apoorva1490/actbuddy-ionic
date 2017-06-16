@@ -67,6 +67,51 @@
 
   "speakers": [
     {
+      "name": "Archana",
+      "profilePic": "assets/img/categories/arcadesports.svg",
+      "twitter": "ionicframework",
+      "about": "I like to travel and dance.",
+      "location": "Everywhere"
+    },
+    {
+      "name": "Charlie Sheen",
+      "profilePic": "assets/img/categories/ballsports.svg",
+      "twitter": "ionicframework",
+      "about": "I love tennis!",
+      "location": "Everywhere"
+    },
+    {
+      "name": "Max Richard",
+      "profilePic": "assets/img/categories/dancesports.svg",
+      "twitter": "ionicframework",
+      "about": "Want to meet new people!",
+      "location": "Everywhere"
+    },
+    {
+      "name": "Eva Ryan",
+      "profilePic": "assets/img/categories/racketsports.svg",
+      "twitter": "ionicframework",
+      "about": "Eva is an Eagle.",
+      "location": "Everywhere"
+    },
+    {
+      "name": "Rositta Jack",
+      "profilePic": "assets/img/categories/tracksports.svg",
+      "twitter": "ionicframework",
+      "about": "Love Hiking",
+      "location": "Everywhere"
+    },
+    {
+      "name": "Matilda",
+      "profilePic": "assets/img/categories/watersports.svg",
+      "twitter": "ionicframework",
+      "about": "I like walking.",
+      "location": "Everywhere"
+    }
+  ],
+
+ "sports": [
+    {
       "name": "Arcade",
       "profilePic": "assets/img/categories/arcadesports.svg",
       "twitter": "ionicframework",

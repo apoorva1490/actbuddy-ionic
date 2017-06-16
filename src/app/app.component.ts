@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
+import { UserDetailPage } from '../pages/user-detail/user-detail';
 import { FirstRunPage } from '../pages/pages';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { LoginPage } from '../pages/login/login';
@@ -22,6 +23,7 @@ import { CategoryDetailPage } from '../pages/category-detail/category-detail';
 import { Settings } from '../providers/providers';
 import { UserData } from '../providers/user-data';
 import { ConferenceData } from '../providers/conference-data';
+import { MessagesPage } from '../pages/messages/messages';
 
 import { TranslateService } from '@ngx-translate/core'
 
@@ -61,7 +63,8 @@ export class MyApp {
     { title: 'Master Detail', component: ListMasterPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage }
+    { title: 'Search', component: SearchPage },
+    { title: 'Messages', component: MessagesPage}
   ]
 
   constructor(private translate: TranslateService, 

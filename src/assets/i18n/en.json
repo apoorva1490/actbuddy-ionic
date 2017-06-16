@@ -31,6 +31,8 @@
 
   "WELCOME_INTRO" : "The starting point for your next great Ionic app",
 
+"SEARCH_TITLE":"Find a buddy",
+
   "SETTINGS_TITLE": "Settings",
   "SETTINGS_OPTION1": "Option 1",
   "SETTINGS_OPTION2": "Option 2",

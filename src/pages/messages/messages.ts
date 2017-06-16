@@ -4,7 +4,7 @@ import { InAppBrowser } from 'ionic-native';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserDetailPage } from '../speaker-detail/speaker-detail';
 import { PopoverPage } from '../request/user-request';
-import { MessageDetailsPage } from '../'
+
 /**
  * Generated class for the MessagesPage page.
  *

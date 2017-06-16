@@ -16,17 +16,27 @@
 
 
 <ion-content class="outer-content speaker-list">
+<ion-label> Favorites </ion-label>
+<ion-row>
+    <ion-item no-lines>
+    <ion-scroll scrollX="true" scroll-avatar>
+        <ion-avatar>
+          <img [src]="message.profilePic" *ngFor="let message of messages" class="scroll-item"/>
+        </ion-avatar>
+    </ion-scroll>
+    </ion-item>
+  </ion-row>
 <ion-list>
   <ion-list-header>
     My Requests
   </ion-list-header>
-  <ion-item-sliding *ngFor="let speaker of speakers" class="speaker">
+  <ion-item-sliding *ngFor="let message of messages" class="speaker">
 
     <ion-item>
       <ion-avatar item-left>
-        <img [src]="speaker.profilePic">
+        <img [src]="message.profilePic">
       </ion-avatar>
-      <h2>{{speaker.name}}</h2>
+      <h2>{{message.name}}</h2>
       <p>Let's meet for ...</p>
       <ion-note item-right>3:43 pm</ion-note>
     </ion-item>

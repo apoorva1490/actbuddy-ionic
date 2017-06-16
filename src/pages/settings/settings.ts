@@ -5,6 +5,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Settings } from '../../providers/settings';
 
 import { TranslateService } from '@ngx-translate/core';
+import { UserData } from '../../providers/user-data';
+import { ConferenceData } from '../../providers/conference-data';
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -18,8 +20,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class SettingsPage {
   // Our local settings object
   options: any;
-
+  speakers: any = [];
+  age: any = {lower: 10, upper: 60};
+  location: number = 20;
   settingsReady = false;
+  selectSportsOptions: any;
+  iconWoman: string = "true"
+  iconMan: string = "true"
 
   form: FormGroup;
 
@@ -37,15 +44,25 @@ export class SettingsPage {
   constructor(public navCtrl: NavController,
     public settings: Settings,
     public formBuilder: FormBuilder,
+    public confData: ConferenceData,
     public navParams: NavParams,
     public translate: TranslateService) {
+
+
+      this.selectSportsOptions = {
+      title: 'Interest',
+      subTitle: 'Select sports you want to play',
+      mode: 'md'
+    };
   }
 
   _buildForm() {
     let group: any = {
       option1: [this.options.option1],
       option2: [this.options.option2],
-      option3: [this.options.option3]
+      option3: [this.options.option3],
+      option4: [this.options.option4],
+      option5: [this.options.option5]
     };
 
     switch (this.page) {
@@ -68,6 +85,9 @@ export class SettingsPage {
   ionViewDidLoad() {
     // Build an empty form for the template to render
     this.form = this.formBuilder.group({});
+    this.confData.getSpeakers().subscribe((speakers: any[]) => {
+    this.speakers = speakers;
+    });
   }
 
   ionViewWillEnter() {
@@ -87,6 +107,10 @@ export class SettingsPage {
 
       this._buildForm();
     });
+  }
+
+ onChange(ev: any) {
+    console.log('Changed', ev);
   }
 
   ngOnChanges() {

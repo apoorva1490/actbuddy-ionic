@@ -8,10 +8,12 @@ import { MyApp } from './app.component';
 
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
+import { UserDetailPage } from '../pages/user-detail/user-detail';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { LoginPage } from '../pages/login/login';
+import { MessagesPage } from '../pages/messages/messages';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
@@ -83,7 +85,9 @@ let pages = [
   WelcomePage,
   SchedulePage,
   SessionDetailPage,
-  CategoryDetailPage
+  CategoryDetailPage,
+  UserDetailPage,
+  MessagesPage
 ];
 
 export function declarations() {

@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
 
   <ion-navbar>
     <ion-title>{{ 'SEARCH_TITLE' | translate }}</ion-title>
@@ -11,9 +11,9 @@
   <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-list>
     <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
-      <!--<ion-avatar item-start>
+      <ion-avatar item-start>
         <img [src]="item.profilePic" />
-      </ion-avatar>-->
+      </ion-avatar>
       <h2>{{item.name}}</h2>
       <p>{{item.about}}</p>
       <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
@@ -28,4 +28,207 @@
       </ion-card>
     </ion-col>
   </ion-row>
+</ion-content>-->
+
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" *ngIf="settingsReady">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label><ion-icon name="people"></ion-icon>Gender</ion-label>
+        <ion-select formControlName="option1" [(ngModel)]="gender">
+           <ion-option value="a" selected="true">All</ion-option>
+          <ion-option value="f">Female</ion-option>
+          <ion-option value="m">Male</ion-option>
+         
+        </ion-select>
+      </ion-item>    
+        <ion-list-header>
+          Age Range:
+          <ion-badge item-end color="primary">{{ageRange.lower}}-{{ageRange.upper}}</ion-badge>
+        </ion-list-header>
+        <ion-item>
+          <ion-range formControlName="option5" min="15" max="100" dualKnobs="true" tick="true" step="10" snaps="false" pin="true" [(ngModel)]="ageRange"
+            (ionChange)="onChange($event)" color="default">
+            <ion-label range-left small>15</ion-label>
+            <ion-label range-right small>100</ion-label>
+          </ion-range>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Radius  <ion-badge item-end color="light">{{location}}</ion-badge>
+          </ion-label>
+          <ion-range formControlName="option2" min="15" max="100" step="true" snaps="false" pin="true" [(ngModel)]="location" (ionChange)="onChange($event)"
+            color="dark">
+            <ion-label range-left>15</ion-label>
+            <ion-label range-right>100</ion-label>
+          </ion-range>
+         
+        </ion-item>
+        <ion-item-divider color="primary"> Activities </ion-item-divider>
+        <ion-item>
+          <ion-label>Level:</ion-label>
+          <ion-select formControlName="option1" [(ngModel)]="level" interface="action-sheet">
+            <ion-option value="1" selected="true"> Want to Try </ion-option>
+            <ion-option value="2"> Beginner </ion-option>
+            <ion-option value="3"> Intermediate </ion-option>
+            <ion-option value="4"> Expert </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label> Sport: </ion-label>
+          <ion-select formControlName="option3" [(ngModel)]="activities" multiple="true" cancelText="Cancel" okText="Okay!">
+          
+            <ion-option selected="true">Badminton</ion-option>
+            <ion-option>Netball</ion-option>
+          </ion-select>
+        </ion-item>
+      <!--<ion-item>
+        <ion-label>{{ 'SETTINGS_OPTION2' | translate }}</ion-label>
+        <ion-input formControlName="option2"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'SETTINGS_OPTION3' | translate }}</ion-label>
+        <ion-select formControlName="option3">
+          <ion-option value="1" checked="true">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item-sliding>
+        <ion-item>
+          Item
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="primary" (click)="archive()">Archive</button>
+        </ion-item-options>
+      </ion-item-sliding>
+
+      <ion-item>
+        <ion-label>Location</ion-label>
+        <ion-range formControlName="option4" dualKnobs="true" min="15" max="100" step="5" snaps="true" [(ngModel)]="age">
+        </ion-range>
+      </ion-item>
+      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
+        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
+      </button>-->
+
+      <!--<ion-list>
+    <ion-list-header>
+      Structure
+      <ion-badge item-end color="dark">{{structure.lower}}</ion-badge>
+      <ion-badge item-end color="dark">{{structure.upper}}</ion-badge>
+    </ion-list-header>
+    <ion-item>
+      <ion-range dualKnobs="true" pin="true" [(ngModel)]="structure" (ionChange)="onChange($event)" color="dark">
+        <ion-label range-left>-0</ion-label>
+        <ion-label range-right>100</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>-->
+    </ion-list>
+      <ion-list *ngIf="page == 'profile'">
+        <ion-item>
+          <ion-label>{{ 'SETTINGS_OPTION4' | translate }}</ion-label>
+          <ion-input formControlName="option4"></ion-input>
+        </ion-item>
+      </ion-list>
+  </form>
+<button (click)="findBuddies()" ion-button full color="primary"> Find Buddies </button>
 </ion-content>
+<!--<ion-header>
+
+  <ion-navbar>
+    <ion-title>Search Filters</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label>Gender : </ion-label>
+        <button ion-button icon-only>
+          <ion-icon name="star"></ion-icon>
+        </button>
+        <button formControlName="option1" ion-button icon-only>
+          <ion-icon name="star"></ion-icon>
+        </button>
+        <button formControlName="option2" ion-button icon-only>
+          <ion-icon name="star"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item>
+        <ion-range formControlName="option3" min="15" max="100" step="5" [(ngModel)]="age">
+        <ion-label>Age Range</ion-label>
+        </ion-range>
+      </ion-item>
+
+       <ion-item>
+        <ion-range formControlName="option4" min="15" max="100" step="5" [(ngModel)]="location">
+        <ion-label>Where : Radius</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-slides formControlName="option5">
+        <ion-slide>
+          <h1> Slide 1 </h1>
+        </ion-slide>
+        <ion-slide>
+          <h1> Slide 2 </h1>
+        </ion-slide>
+        <ion-slide>
+          <h1> Slide 3 </h1>
+        </ion-slide>
+        </ion-slides>
+      </ion-item>
+
+      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
+        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
+      </button>
+    </ion-list>
+
+    <ion-list *ngIf="page == 'profile'">
+      <ion-item>
+        <ion-label>{{ 'SETTINGS_OPTION4' | translate }}</ion-label>
+        <ion-input formControlName="option4"></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>
+-->
+
+<!--<ion-item>
+        <ion-label>Gender : </ion-label>
+        <ion-select formControlName="option2" [(ngModel)]="gender">
+          <ion-option value="1"> Female </ion-option>
+          <ion-option value="2"> Male </ion-option>
+          <ion-option value="3"> Any </ion-option>
+        </ion-select>
+        <!--<ion-segment-button value="camera">
+          <ion-icon name="ios-woman"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="bookmark">
+          <ion-icon name="ios-man"></ion-icon>
+        </ion-segment-button>
+        <button ion-button small color="light" item-right>
+        <ion-icon class="text-on-bottom" name="ios-woman">
+          Female
+        </ion-icon>
+        </button>
+        <ion-label item-end> <ion-icon item-right name="ios-man"  [isActive]="iconMan"></ion-icon> Male</ion-label>
+        <ion-label item-end>  Both</ion-label>
+      </ion-item>-->
