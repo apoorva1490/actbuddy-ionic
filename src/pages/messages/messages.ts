@@ -33,9 +33,9 @@ messages = [];
     });
   }
 
-  // goToMessageDetail(message) {
-  //   this.navCtrl.push(SessionDetailPage, message);
-  // }
+//  goToMessageDetail(message) {
+//      this.navCtrl.push(SessionDetailPage, message);
+//    }
 
   // goToSpeakerDetail(speakerName: any) {
   //   this.navCtrl.push(UserDetailPage, speakerName);

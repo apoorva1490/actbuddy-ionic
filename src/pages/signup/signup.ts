@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-
+import { NgForm } from '@angular/forms';
 import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
 
@@ -15,12 +15,11 @@ export class SignupPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { name: string, email: string, password: string } = {
-    name: 'Test Human',
-    email: 'test@example.com',
-    password: 'test'
-  };
+  account: { firstname?: string, lastname?: string, email?: string, password?: string, dob?: string } = {};
+ 
+  submitted: boolean = false;
 
+  isSelectedButton: boolean = true;
   // Our translated text strings
   private signupErrorString: string;
 
@@ -34,11 +33,19 @@ export class SignupPage {
     })
   }
 
-  doSignup() {
+  onSignup(form: NgForm) {
+
+    this.submitted = true;
+
+    if (form.valid) {
+    //   this.userData.signup(this.signup.username);
+    //   this.navCtrl.push(TabsPage);
+    // }
     // Attempt to login in through our User service
     this.user.signup(this.account).subscribe((resp) => {
       this.navCtrl.push(MainPage);
     }, (err) => {
+      this.submitted=false;
 
       this.navCtrl.push(MainPage); // TODO: Remove this when you add your signup endpoint
 
@@ -51,4 +58,12 @@ export class SignupPage {
       toast.present();
     });
   }
+  }
+
+logEvent(event) {
+  console.log(event);
+  console.log(this.isSelectedButton);
+  this.isSelectedButton = !this.isSelectedButton;
+}
+
 }

@@ -1,3 +1,32 @@
 page-signup {
 
+
+
+.content 
+{
+    text-align: center;
+
+}
+
+  .splash-bg {
+    position: relative;
+    background: url('../assets/img/splashbg.jpg') no-repeat transparent;
+    background-size: cover;
+    height: 30%;
+    z-index: 1;
+    background-repeat: repeat-x;
+    animation: animatedBackground 40s linear infinite;
+  }
+
+  .item > .ion-icon 
+  {
+      min-height: 1.5rem;
+      font-size: 1.5rem;
+  }
+
+.list-ios
+{
+    margin: -1px 0  0 0 ;
+}
+
 }

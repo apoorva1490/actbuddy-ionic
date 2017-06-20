@@ -1,4 +1,4 @@
-page-speaker-list {
+page-messages-list {
 
   .scroll-content {
     background: #EDEDED;
@@ -27,7 +27,7 @@ page-speaker-list {
 
 ion-scroll[scrollX] {
     white-space: nowrap;
-    height: 120px;
+    height: 130px;
     overflow: hidden;
 
     .scroll-item {
@@ -35,18 +35,20 @@ ion-scroll[scrollX] {
     }
 
     .selectable-icon{
-      margin: 10px 20px 10px 20px;
+      margin: 10px 10px 10px 10px;
       color: red;
       font-size: 100px;
     }
 
     ion-avatar img{
       margin: 10px;
+      height: 90px;
+      width: 90px;
     }
   }
 
   ion-scroll[scroll-avatar]{
-    height: 60px;
+    height: 100px;
   }
 
   /* Hide ion-content scrollbar */

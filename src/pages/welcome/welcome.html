@@ -1,4 +1,4 @@
-<ion-content scroll="false">
+l<ion-content scroll="false">
   <div class="splash-bg"></div>
   <!--<div class="splash-info">
     <div class="splash-logo"></div>
@@ -22,14 +22,14 @@
         <ion-input type="text" [(ngModel)]="account.username" name="username" #username="ngModel" spellcheck="false" autocapitalize="off" required>
         </ion-input>
       </ion-item>
-      <p [hidden]="username.valid || submitted == false" color="danger" padding-left>
+      <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
 				 Username is required
 			</p>
       <ion-item>
         <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password" #password="ngModel" required></ion-input>
       </ion-item>
-      <p [hidden]="password.valid || submitted == false" color="danger" padding-left>
+      <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
 				Password is required
 			</p>
        </ion-list>

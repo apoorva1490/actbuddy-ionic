@@ -1,26 +1,79 @@
 <ion-header>
-
+<!--
   <ion-navbar>
     <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
-  </ion-navbar>
+  </ion-navbar>-->
 
 </ion-header>
 
 
 <ion-content>
-  <form (submit)="doSignup()">
+  <div class="splash-bg"></div>
+  <form #signupForm="ngForm" novalidate> <!--(submit)="doSignup()"-->
     <ion-list>
+      <ion-item>
+        <ion-icon item-start color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
+        <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.firstname" name="firstname" #firstname="ngModel" required></ion-input>
+      </ion-item>
+      <p ion-text [hidden]="firstname.valid || submitted == false" color="danger" padding-left>
+				First Name is required
+			</p>
+    <ion-item>
+       <ion-icon item-start color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
+        <ion-label floating>{{ 'LAST_NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.lastname" name="lastname" #lastname="ngModel" required></ion-input>
+      </ion-item>
+      <p ion-text [hidden]="lastname.valid || submitted == false" color="danger" padding-left>
+				Last Name is required
+			</p>
 
       <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+        <ion-icon item-start color="primary" ios="ios-mail-outline" md="md-mail"></ion-icon>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email" #email="ngModel" required></ion-input>
       </ion-item>
-
+      <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+				Email is required
+			</p>
+      
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        <ion-icon item-start color="primary" ios="ios-lock-outline" md="md-lock"></ion-icon>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" #password="ngModel" required></ion-input>
       </ion-item>
+      <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+				Password is required
+			</p>
+       <ion-item>
+        <ion-icon item-start color="primary" name="calendar-outline" md="md-calendar"></ion-icon>
+        <ion-label floating>{{ 'DATEOFBIRTH' | translate }}</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMMM DD YYYY" [(ngModel)]="account.dob" name="dob" #dob="ngModel" required></ion-datetime>
+      </ion-item>
+      <p ion-text [hidden]="dob.valid || submitted == false" color="danger" padding-left>
+				Birth Date is required
+			</p>
+      <ion-item>
+      <div class="content">
+      <button ion-button icon-left (click)="logEvent($event)" [outline]="!isSelectedButton">
+      <!--[color]="isSelectedButton ? 'secondary' : 'primary'"-->
+ <ion-icon name="male"></ion-icon>
+ Male
+ </button>
+ <button ion-button icon-left (click)="logEvent($event)" [outline]="isSelectedButton">
+      <!--[color]="isSelectedButton ? 'secondary' : 'primary'"-->
+ <ion-icon name="female"></ion-icon>
+ Female
+   </button>
+   </div>
 
+ </ion-item>
+
+    <!--<ion-item>
+     <ion-button ng-model="button" ng-click="button.clicked=!button.clicked" ng-class="button.clicked?'button-positive':'button-energized'">
+      Confirm
+     </ion-button>
+    </ion-item>-->
       <!--
       Want to add a Username? Here you go:
 
@@ -30,15 +83,15 @@
       </ion-item>
       -->
 
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-
+<!--
       <div padding>
         <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
-      </div>
+      </div>-->
 
     </ion-list>
+    
+			<button ion-button (click)="onSignup(signupForm)" type="submit" block>Create</button>
+	
+
   </form>
 </ion-content>

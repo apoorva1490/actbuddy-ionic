@@ -1,12 +1,14 @@
 {
   "BACK_BUTTON_TEXT" : "Back",
 
-  "NAME": "Name",
+  "FIRST_NAME": "First Name",
+  "LAST_NAME": "Second Name",
   "EMAIL": "Email",
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "LOGIN": "Sign in",
   "SIGNUP": "Sign up",
+  "DATEOFBIRTH": "Date of Birth",
 
   "TAB1_TITLE": "Home",
   "TAB2_TITLE": "Search",
@@ -14,6 +16,7 @@
   "TAB4_TITLE": "Profile",
 
   "MAP_TITLE": "Map",
+
 
   "TUTORIAL_SKIP_BUTTON" : "Skip",
   "TUTORIAL_CONTINUE_BUTTON" : "Continue",

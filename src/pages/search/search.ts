@@ -106,6 +106,7 @@ export class SearchPage {
   location: number = 20;
   level: any;
   sports: any = [];
+  singleValue4: any = {lower: 10, upper: 60};
 
 
   options: any;

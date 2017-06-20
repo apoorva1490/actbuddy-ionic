@@ -32,7 +32,7 @@
 
 <ion-header>
 
-  <ion-navbar color="dark">
+  <ion-navbar color="primary">
     <ion-title>{{ pageTitle }}</ion-title>
   </ion-navbar>
 
@@ -42,7 +42,8 @@
   <form [formGroup]="form" *ngIf="settingsReady">
     <ion-list no-lines>
       <ion-item>
-        <ion-label><ion-icon name="people"></ion-icon>Gender</ion-label>
+        <ion-icon name="people"> </ion-icon>
+        <ion-label>Gender:</ion-label>
         <ion-select formControlName="option1" [(ngModel)]="gender">
            <ion-option value="a" selected="true">All</ion-option>
           <ion-option value="f">Female</ion-option>
@@ -55,23 +56,27 @@
           <ion-badge item-end color="primary">{{ageRange.lower}}-{{ageRange.upper}}</ion-badge>
         </ion-list-header>
         <ion-item>
-          <ion-range formControlName="option5" min="15" max="100" dualKnobs="true" tick="true" step="10" snaps="false" pin="true" [(ngModel)]="ageRange"
+          <ion-range dualKnobs="true" formControlName="option5"  min="10" max="100" step="10" [(ngModel)]="ageRange"
             (ionChange)="onChange($event)" color="default">
             <ion-label range-left small>15</ion-label>
             <ion-label range-right small>100</ion-label>
           </ion-range>
         </ion-item>
+         <ion-list-header>
+          Radius (km):
+          <ion-badge item-end color="primary">{{location}}</ion-badge>
+        </ion-list-header>
         <ion-item>
-          <ion-label stacked>Radius  <ion-badge item-end color="light">{{location}}</ion-badge>
-          </ion-label>
-          <ion-range formControlName="option2" min="15" max="100" step="true" snaps="false" pin="true" [(ngModel)]="location" (ionChange)="onChange($event)"
-            color="dark">
-            <ion-label range-left>15</ion-label>
+          <!--<ion-label stacked>Radius  <ion-badge item-end color="light">{{location}}</ion-badge>
+          </ion-label>-->
+          <ion-range formControlName="option2"  min="10" max="100" step="10" snaps="true" pin="true" [(ngModel)]="location" (ionChange)="onChange($event)"
+           color="primary" >
+            <ion-label range-left>10</ion-label>
             <ion-label range-right>100</ion-label>
           </ion-range>
          
         </ion-item>
-        <ion-item-divider color="primary"> Activities </ion-item-divider>
+        <ion-item-divider color="calm"> Activities </ion-item-divider>
         <ion-item>
           <ion-label>Level:</ion-label>
           <ion-select formControlName="option1" [(ngModel)]="level" interface="action-sheet">

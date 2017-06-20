@@ -6,16 +6,56 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{user.name}}</ion-title>
+    <ion-title>Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="user-detail">
 
-  <div text-center>
-    <img [src]="user.profilePic" [alt]="user.name"><br>
+     <!--<div class="item-profile" text-center #profilePic [style.background-image]="'url(' + user.profilePic + ')'">
+      <div class="content">
+        <h3>{{user.name}}</h3>
+        </div>
+   <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
+				 Username is required-->
+    <!--<div class="item-name">{{user.name}}</div>
+ </div>-->
+ 
+  <div class="hero" [style.background-image]="'url(' + user.profilePic + ')'">
+            <div class="content">
+                <!--<div class="avatar" [style.background-image]="'url(' + user.profilePic + ')'"></div>-->
+                <h1>Archana</h1>
+                <!--<h4>dragon_mommy</h4>-->
+            </div>
+        </div>
+<div style="border:thin">
+<ion-scroll scrollX="true" scroll-avatar>
+<ion-chip>
+  <ion-label color="primary">Hiking</ion-label>
+</ion-chip>
+<ion-chip>
+  <ion-label color="primary">Netball</ion-label>
+</ion-chip>
+<ion-chip>
+  <ion-label color="primary">Badminton</ion-label>
+</ion-chip>
+<ion-chip>
+  <ion-label color="primary">Baseball</ion-label>
+</ion-chip>
+<ion-chip>
+  <ion-label color="primary">Ice-skating</ion-label>
+</ion-chip>
+<ion-chip>
+  <ion-label color="primary">Netball</ion-label>
+</ion-chip>
 
-    <button ion-button icon-only clear small color="twitter">
+  <!--<ion-avatar>
+          <img [src]="message.profilePic" *ngFor="let message of messages" class="scroll-item" (click)="presentPopover($event)">
+        </ion-avatar>-->
+    </ion-scroll>
+    <!--<img [src]="user.profilePic" [alt]="user.name"><br>-->
+
+    <!--<button ion-button icon-only clear small color="twitter">
       <ion-icon name="logo-twitter"></ion-icon>
     </button>
     <button ion-button icon-only clear small color="github">
@@ -23,9 +63,16 @@
     </button>
     <button ion-button icon-only clear small color="instagram">
       <ion-icon name="logo-instagram"></ion-icon>
-    </button>
+    </button>-->
   </div>
-
+  <div>
   <p>{{user.about}}</p>
+  </div>
+  <ion-footer no-shadow>
+   <button item-end block ion-button icon-left>
+       Send Request
+       </button>
+  </ion-footer>
+  
 
 </ion-content>

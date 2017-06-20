@@ -6,13 +6,29 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
  <ion-content class="outer-content speaker-list">
   <ion-list [virtualScroll]="speakers">
-    <ion-grid fixed>
-      <ion-row align-items-stretch>
+    <ion-item-sliding *virtualItem="let speaker" class="speaker" (click)="goToSpeakerDetail(speaker)">
+     <ion-item>
+     <!--<ion-item-sliding *virtualItem="let speaker" *ngFor="let message of messages" class="speaker">-->
+        <ion-avatar item-start>
+                  <ion-img [src]="speaker.profilePic" alt="Speaker profile pic"></ion-img>
+                </ion-avatar>
+                <h3>{{speaker.name}} </h3>
+                <p>
+                    {{speaker.about}}
+          </p>
+          </ion-item>
+           <ion-item-options side="left">
+      <button ion-button (click)="favorite(item)">Favorite</button>
+      <button ion-button color="danger" (click)="share(item)">Share</button>
+    </ion-item-options>
+    </ion-item-sliding>
 
-        <ion-col col-12 col-md-6 align-self-stretch align-self-center *virtualItem="let speaker" approxItemHeight="457px">
+ <!-- <ion-grid fixed>
+      <ion-row align-items-stretch>
+        <ion-col align-self-stretch align-self-center *virtualItem="let speaker" approxItemHeight="457px">
 
           <ion-card class="speaker-card">
             <ion-card-header>
@@ -25,7 +41,7 @@
                     {{speaker.about}}
           </p>
               </button>
-            </ion-card-header>
+            </ion-card-header>-->-->
 <!--
             <ion-card-content class="outer-content">
               <ion-list>
@@ -60,10 +76,10 @@
               </ion-col>
             </ion-row> -->
 
-          </ion-card>
+          <!--</ion-card>
 
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid>-->
   </ion-list>
 </ion-content>

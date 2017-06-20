@@ -1,17 +1,21 @@
+<!--
+  Generated template for the MesssageDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>Session</ion-title>
+    <ion-title>message-detail</ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  <h1>{{session.name}}</h1>
-  <div padding class="about-info">
-  <h4 *ngFor="let speaker of session.speakers">
-    {{speaker.name}}
-  </h4>
-  <ion-list no-lines>
-  <ion-item>
+<ion-card>
+    <ion-item>
   <ion-icon name="calendar" item-start></ion-icon>
         <ion-label>Time: </ion-label>
         <ion-label>{{session.timeStart}} - {{session.timeEnd}}</ion-label>
@@ -22,20 +26,5 @@
         <ion-label>Location</ion-label>
         <ion-label item-end> {{session.location}} </ion-label>
  </ion-item>
-  </ion-list>
-  </div>
-      <div>
-        <ion-row responsive-sm>
-          <ion-col>
-            <button block ion-button icon-left>
-       Change
-       </button>
-          </ion-col>
-          <ion-col>
-            <button block ion-button icon-left>
-       Cancel
-       </button>
-          </ion-col>
-        </ion-row>
-        </div>
+</ion-card>
 </ion-content>
