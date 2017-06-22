@@ -7,6 +7,7 @@ import { Item } from '../../models/item';
 export class Items {
   items: Item[] = [];
   filteredItems : any [] = [];
+  sportItems: Item[] = [];
   defaultItem: any = {
      "name": "Billiards",
       "type": "Individual",
@@ -24,18 +25,6 @@ export class Items {
     let items = [
     {
       "name": "Billiards",
-      "type": "Individual",
-      "category": "Arcade",
-      "level": [
-        {
-          "lvl1": "CAN MAKE IT AH",
-          "lvl2": "GOOD AND BETTER BUT NOT BEST.",
-          "lvl3": "ACCURATE, EXCELLENT, ON POINT"
-        }
-      ]
-    },
-    {
-      "name": "Bowling",
       "type": "Individual",
       "category": "Arcade",
       "level": [
@@ -196,9 +185,19 @@ export class Items {
       "category": "Track",
       "level": [
         {
-          "lvl1": "CAN MAKE IT AH",
-          "lvl2": "GOOD AND BETTER BUT NOT BEST.",
-          "lvl3": "ACCURATE, EXCELLENT, ON POINT"
+          "id": "1",
+          "name": "CAN MAKE IT AH",
+          "checked": "false"
+        },
+        {
+          "id":"2",
+          "name":"GOOD AND BETTER BUT NOT BEST.",
+          "checked":"false"
+        },
+        { 
+          "id": "3",
+          "name": "ACCURATE, EXCELLENT, ON POINT",
+          "checked":"false"
         }
       ]
     },
@@ -349,8 +348,33 @@ export class Items {
     ];
 
     for (let item of items) {
-      this.items.push(new Item(item));
+       this.sportItems.push(new Item(item));
+       this.sportItems.sort(function(a: any,b: any){if (a.name < b.name)
+                                      return -1;
+                                   else if (a.name == b.name)
+                                      return 0;
+                                   else
+                                      return 1;}); 
     }
+  }
+
+
+  querySports(params?: any) {
+    if (!params) {
+      return this.sportItems;
+    }
+
+    return this.sportItems.filter((item) => {
+      for (let key in params) {
+        let field = item[key];
+        if (typeof field == 'string' && field.toLowerCase().indexOf(params[key].toLowerCase()) >= 0) {
+          return item;
+        } else if (field == params[key]) {
+          return item;
+        }
+      }
+      return null;
+    });
   }
 
   query(params?: any) {

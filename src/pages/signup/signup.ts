@@ -3,6 +3,7 @@ import { NavController, ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
+import { CompleteProfilePage } from '../complete-profile/complete-profile';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -42,12 +43,19 @@ export class SignupPage {
     //   this.navCtrl.push(TabsPage);
     // }
     // Attempt to login in through our User service
+
+
     this.user.signup(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
+      this.navCtrl.push(CompleteProfilePage, {
+        account : this.account
+      });
     }, (err) => {
       this.submitted=false;
 
-      this.navCtrl.push(MainPage); // TODO: Remove this when you add your signup endpoint
+      this.navCtrl.push(CompleteProfilePage,
+      {
+        account : this.account
+      }); // TODO: Remove this when you add your signup endpoint
 
       // Unable to sign up
       let toast = this.toastCtrl.create({

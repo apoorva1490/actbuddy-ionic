@@ -3,7 +3,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, ViewController } from 'ionic-angular';
 
 import { Camera } from '@ionic-native/camera';
-
+import { Items } from '../../providers/providers';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'page-item-create',
@@ -13,26 +14,50 @@ export class ItemCreatePage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
-
+  sportItems: Item[] = [];
   item: any;
-
+  sports: any;
+  levels: any[];
   form: FormGroup;
+  sport: any;
+  level: any;
+  selectedID: any;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController, public items: Items, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
     this.form = formBuilder.group({
-      profilePic: [''],
       name: ['', Validators.required],
-      about: ['']
+      level:['', Validators.required]
     });
 
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+
+    this.sportItems = this.items.querySports();
   }
 
   ionViewDidLoad() {
 
+  }
+
+  setLevelValues(sport) {
+    console.log(sport);
+    console.log(sport.level);
+    this.sportItems.forEach(element => {
+      console.log(element);
+    });
+    
+    this.levels = sport.level;
+  }
+
+  updateLevel(level)
+  {
+    console.log(level.id);
+    this.selectedID = level.id;
+     this.form.valueChanges.subscribe((v) => {
+      this.selectedID = this.level.id;
+    });
   }
 
   getPicture() {
