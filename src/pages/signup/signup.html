@@ -12,7 +12,7 @@
   <form #signupForm="ngForm" novalidate> <!--(submit)="doSignup()"-->
     <ion-list>
       <ion-item>
-        <ion-icon item-start color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
+        <ion-icon item-start is-active="false" color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
         <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.firstname" name="firstname" #firstname="ngModel" required></ion-input>
       </ion-item>
@@ -55,14 +55,14 @@
 			</p>
       <ion-item>
       <div class="content">
-      <button ion-button icon-left (click)="logEvent($event)" [outline]="!isSelectedButton">
+      <button ion-button icon-left  (click)="logEvent($event)" [outline]="!isSelectedButton">
       <!--[color]="isSelectedButton ? 'secondary' : 'primary'"-->
- <ion-icon name="male"></ion-icon>
+ <ion-icon  name="male" is-active="true"></ion-icon>
  Male
  </button>
- <button ion-button icon-left (click)="logEvent($event)" [outline]="isSelectedButton">
+ <button ion-button icon-left  (click)="logEvent($event)" [outline]="isSelectedButton">
       <!--[color]="isSelectedButton ? 'secondary' : 'primary'"-->
- <ion-icon name="female"></ion-icon>
+ <ion-icon  name="female" is-active="true"></ion-icon>
  Female
    </button>
    </div>

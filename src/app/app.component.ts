@@ -14,6 +14,7 @@ import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
+import { CompleteProfilePage } from '../pages/complete-profile/complete-profile';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
@@ -55,7 +56,7 @@ export class MyApp {
     { title: 'Tutorial', component: TutorialPage },
     { title: 'Welcome', component: WelcomePage },
     { title: 'Tabs', component: TabsPage },
-    { title: 'Cards', component: CardsPage },
+    { title: 'Cards', component: CompleteProfilePage },
     { title: 'Content', component: ContentPage },
     { title: 'Login', component: LoginPage },
     { title: 'Signup', component: SignupPage },

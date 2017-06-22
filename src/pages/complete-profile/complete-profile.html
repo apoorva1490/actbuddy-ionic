@@ -5,10 +5,8 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Complete Profile</ion-title>
-  </ion-navbar>
 
     <ion-buttons end>
       <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
@@ -19,28 +17,27 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
-
 <ion-content padding>
-   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+   <form #signupForm="ngForm" novalidate> 
+   <!--<form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">-->
     <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
-        <ion-icon name="add"></ion-icon>
-        <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
-        </div>
+        <ion-icon ios="ios-contact-outline" md="md-contact">
+        </ion-icon>
+         <ion-badge>+</ion-badge>
+          <!--{{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}-->
+       
       </div>
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+    <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
     <ion-list>
       <ion-item>
         <ion-icon item-start color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
         <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.firstname" name="firstname" #firstname="ngModel" required></ion-input>
+        <ion-input type="text" formControlName="firstname" [(ngModel)]="account.firstname" name="firstname" #firstname="ngModel" required></ion-input>
       </ion-item>
       <p ion-text [hidden]="firstname.valid || submitted == false" color="danger" padding-left>
 				First Name is required
@@ -48,7 +45,7 @@
     <ion-item>
        <ion-icon item-start color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
         <ion-label floating>{{ 'LAST_NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.lastname" name="lastname" #lastname="ngModel" required></ion-input>
+        <ion-input type="text" formControlName="lastname" [(ngModel)]="account.lastname" name="lastname" #lastname="ngModel" required></ion-input>
       </ion-item>
       <p ion-text [hidden]="lastname.valid || submitted == false" color="danger" padding-left>
 				Last Name is required
@@ -56,12 +53,42 @@
 
       <ion-item>
         <ion-icon item-start color="primary" ios="ios-mail-outline" md="md-mail"></ion-icon>
-        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email" #email="ngModel" required></ion-input>
+        <ion-label floating>{{ 'EMAIL' | translate}}</ion-label>
+        <ion-input type="email" formControlName="email" [(ngModel)]="account.email" name="email" #email="ngModel" required></ion-input>
       </ion-item>
       <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
 				Email is required
 			</p>
-      
+       <ion-item>
+        <ion-icon item-start color="primary" ios="ios-create-outline" md="md-create"></ion-icon>
+        <ion-textarea placeholder="About me" formControlName="about" [(ngModel)]="account.aboutme" name="aboutme" #aboutme="ngModel" required></ion-textarea>
+      </ion-item>
+      <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+				About me is required
+			</p>
+      <ion-item-divider color="calm"> Activities
+        <button item-end ion-button clear color="light" icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+       </ion-item-divider>
+    </ion-list>
+     <ion-list>
+       <ion-item [hidden]="currentItems.length > 0">
+         <p><strong> No activities added yet. Please add activities. </strong></p>
+       </ion-item>
+     <ion-item-sliding *ngFor="let item of currentItems">
+      <button ion-item (click)="openItem(item)">
+        <h2>{{item.name.name}}</h2>
+        <p>{{item.level.name}}</p>
+        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
+      </button>
 
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  </form>
 </ion-content>

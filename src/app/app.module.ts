@@ -12,6 +12,7 @@ import { UserDetailPage } from '../pages/user-detail/user-detail';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { ListMasterPage } from '../pages/list-master/list-master';
+import { CompleteProfilePage } from '../pages/complete-profile/complete-profile';
 import { LoginPage } from '../pages/login/login';
 import { MessagesPage } from '../pages/messages/messages';
 import { MapPage } from '../pages/map/map';
@@ -87,7 +88,8 @@ let pages = [
   SessionDetailPage,
   CategoryDetailPage,
   UserDetailPage,
-  MessagesPage
+  MessagesPage,
+  CompleteProfilePage
 ];
 
 export function declarations() {
