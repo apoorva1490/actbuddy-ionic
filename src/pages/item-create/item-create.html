@@ -28,26 +28,38 @@
     <ion-list no-lines>
       <ion-item>
         <ion-label> Sport </ion-label>
-        <ion-select (ionChange)="setLevelValues(sport)" formControlName="firstname" [(ngModel)]="sport">
+        <ion-select (ionChange)="setLevelValues(sport)" formControlName="name" [(ngModel)]="sport">
           <ion-option [value]="sport" *ngFor="let sport of sportItems">{{sport.name}}</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>
-    <ion-list no-lines radio-group formControlName="level">
+    <ion-list no-lines radio-group formControlName="level" *ngIf=this.levels>
     <ion-list-header>
     Level
     </ion-list-header>
-      <ion-item *ngFor="let level of levels" >
+      <ion-item>
          <!--[color]="isSelectedButton ? 'secondary' : 'primary'"-->
-        <ion-radio item-left [value]="level"></ion-radio>
+        <ion-radio item-left [value]="levels[0].lvl1"></ion-radio>
         <ion-note color="dark" item-left>
-          {{level.name}}
+          {{levels[0].lvl1}}
         </ion-note>
           <!--<ion-label> Level </ion-label>
         <ion-select formControlName="name" [(ngModel)]="level" reorder="true">
           <ion-option [value]="level.id" *ngFor="let level of levels">{{level.name}}</ion-option>
         </ion-select>-->
         <!--<ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>-->
+      </ion-item>
+       <ion-item>
+        <ion-radio item-left [value]="levels[0].lvl2"></ion-radio>
+        <ion-note color="dark" item-left>
+          {{levels[0].lvl2}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-radio item-left [value]="levels[0].lvl3"></ion-radio>
+        <ion-note color="dark" item-left>
+          {{levels[0].lvl3}}
+        </ion-note>
       </ion-item>
       <!--<ion-item>
         <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>

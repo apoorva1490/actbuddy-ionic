@@ -7,7 +7,7 @@ import { Camera } from '@ionic-native/camera';
 import { ItemCreatePage } from '../item-create/item-create';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
-import { Items } from '../../providers/providers';
+import { Items, Sports } from '../../providers/providers';
 
 import { Item } from '../../models/item';
 /**
@@ -52,7 +52,9 @@ export class CompleteProfilePage {
   
     this.form = formBuilder.group({
       profilePic: [''],
-      name: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['',Validators.required],
+      email:[''],
       about: ['']
     });
 

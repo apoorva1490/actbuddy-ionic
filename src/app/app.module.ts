@@ -30,6 +30,7 @@ import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
+import { Sports } from '../providers/sports';
 
 import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -111,6 +112,7 @@ export function providers() {
     StatusBar,
     ConferenceData,
     UserData,
+    Sports,
 
     { provide: Settings, Storage, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
