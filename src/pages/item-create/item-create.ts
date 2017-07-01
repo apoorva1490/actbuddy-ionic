@@ -1,9 +1,9 @@
-import { Component, ViewChild, } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NavController, ViewController, AlertController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 
 import { Camera } from '@ionic-native/camera';
-import { Items, Sports } from '../../providers/providers';
+import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
 
 @Component({
@@ -14,7 +14,7 @@ export class ItemCreatePage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
-  sportItems: any;
+  sportItems: Item[] = [];
   item: any;
   sports: any;
   levels: any[];
@@ -23,10 +23,10 @@ export class ItemCreatePage {
   level: any;
   selectedID: any;
 
-  constructor(public navCtrl: NavController, public sportService: Sports, public alertCtrl: AlertController, public items: Items, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController, public items: Items, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
     this.form = formBuilder.group({
       name: ['', Validators.required],
-      level: ['', Validators.required]
+      level:['', Validators.required]
     });
 
     // Watch the form for changes, and
@@ -34,32 +34,7 @@ export class ItemCreatePage {
       this.isReadyToSave = this.form.valid;
     });
 
-
-    let options = {
-
-    };
-
-    this.sportService.getSports(options).then((data) => {
-
-      if (typeof (data[0]) === "undefined") {
-        let alert = this.alertCtrl.create({
-          title: 'Oops!',
-          subTitle: 'Sorry, no sports could be found for your search criteria.',
-          buttons: ['Ok']
-        });
-
-        alert.present();
-      } else {
-        // this.nav.push(AvailableRoomsPage, {
-        //     rooms: data,
-        //     details: options
-        // });
-        this.sportItems = data;
-      }
-
-    }, (err) => {
-      console.log(err);
-    });
+    this.sportItems = this.items.querySports();
   }
 
   ionViewDidLoad() {
@@ -72,16 +47,15 @@ export class ItemCreatePage {
     this.sportItems.forEach(element => {
       console.log(element);
     });
-
     
     this.levels = sport.level;
-    console.log(this.levels);
   }
 
-  updateLevel(level) {
+  updateLevel(level)
+  {
     console.log(level.id);
     this.selectedID = level.id;
-    this.form.valueChanges.subscribe((v) => {
+     this.form.valueChanges.subscribe((v) => {
       this.selectedID = this.level.id;
     });
   }

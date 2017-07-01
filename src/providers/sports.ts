@@ -15,7 +15,7 @@ export class Sports {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
  
-      this.http.get('http://localhost:8080/api/sports', {headers: headers})
+      this.http.post('http://localhost:8080/api/sports', JSON.stringify(options), {headers: headers})
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);

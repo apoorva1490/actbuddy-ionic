@@ -34,8 +34,11 @@ import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
+<<<<<<< HEAD
 import { Sports } from '../providers/sports';
 import { AuthProvider } from '../providers/auth';
+=======
+>>>>>>> parent of f8d2172... Sports from mongodb
 
 import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -126,8 +129,11 @@ export function providers() {
     StatusBar,
     ConferenceData,
     UserData,
+<<<<<<< HEAD
     Sports,
     AuthProvider,
+=======
+>>>>>>> parent of f8d2172... Sports from mongodb
 
     { provide: Settings, Storage, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development

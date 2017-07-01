@@ -37,7 +37,7 @@
       <ion-item>
         <ion-icon item-start color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
         <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
-        <ion-input type="text"  [(ngModel)]="account.firstname" name="firstname" #firstname="ngModel" required></ion-input>
+        <ion-input type="text" formControlName="firstname" [(ngModel)]="account.firstname" name="firstname" #firstname="ngModel" required></ion-input>
       </ion-item>
       <p ion-text [hidden]="firstname.valid || submitted == false" color="danger" padding-left>
 				First Name is required
@@ -45,7 +45,7 @@
     <ion-item>
        <ion-icon item-start color="primary" ios="ios-contact-outline" md="md-contact"></ion-icon>
         <ion-label floating>{{ 'LAST_NAME' | translate }}</ion-label>
-        <ion-input type="text"  [(ngModel)]="account.lastname" name="lastname" #lastname="ngModel" required></ion-input>
+        <ion-input type="text" formControlName="lastname" [(ngModel)]="account.lastname" name="lastname" #lastname="ngModel" required></ion-input>
       </ion-item>
       <p ion-text [hidden]="lastname.valid || submitted == false" color="danger" padding-left>
 				Last Name is required
@@ -54,16 +54,16 @@
       <ion-item>
         <ion-icon item-start color="primary" ios="ios-mail-outline" md="md-mail"></ion-icon>
         <ion-label floating>{{ 'EMAIL' | translate}}</ion-label>
-        <ion-input type="email"  [(ngModel)]="account.email" name="email" #email="ngModel" required></ion-input>
+        <ion-input type="email" formControlName="email" [(ngModel)]="account.email" name="email" #email="ngModel" required></ion-input>
       </ion-item>
       <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
 				Email is required
 			</p>
        <ion-item>
         <ion-icon item-start color="primary" ios="ios-create-outline" md="md-create"></ion-icon>
-        <ion-textarea placeholder="About me" [(ngModel)]="account.aboutme" name="aboutme" #aboutme="ngModel" required></ion-textarea>
+        <ion-textarea placeholder="About me" formControlName="about" [(ngModel)]="account.aboutme" name="aboutme" #aboutme="ngModel" required></ion-textarea>
       </ion-item>
-      <p ion-text [hidden]="aboutme.valid || submitted == false" color="danger" padding-left>
+      <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
 				About me is required
 			</p>
       <ion-item-divider color="calm"> Activities
@@ -79,7 +79,7 @@
      <ion-item-sliding *ngFor="let item of currentItems">
       <button ion-item (click)="openItem(item)">
         <h2>{{item.name.name}}</h2>
-        <p>{{item.level}}</p>
+        <p>{{item.level.name}}</p>
         <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
       </button>
 

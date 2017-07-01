@@ -12,6 +12,5 @@ Api,
 Settings,
 Items,
 ConferenceData,
-Sports,
-Sessions,
+Sports
 };
