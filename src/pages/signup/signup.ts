@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, LoadingController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
 import { CompleteProfilePage } from '../complete-profile/complete-profile';
-
+import { AuthProvider } from '../../../providers/auth';
 import { TranslateService } from '@ngx-translate/core';
 
 
@@ -13,10 +13,14 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
+
+  error: any;
+  form: any;
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { firstname?: string, lastname?: string, email?: string, password?: string, dob?: string } = {};
+  account: { firstname?: string, lastname?: string,
+     email?: string, password?: string, dob?: string } = {};
  
   submitted: boolean = false;
 
@@ -25,9 +29,11 @@ export class SignupPage {
   private signupErrorString: string;
 
   constructor(public navCtrl: NavController,
+    private auth: AuthProvider,
     public user: User,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    private loadingCtrl: LoadingController) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
@@ -66,6 +72,32 @@ export class SignupPage {
       toast.present();
     });
   }
+}
+
+register() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
+    this.auth.registerUser(this.form).subscribe(registerData => {
+      this.auth.loginWithEmail(registerData).subscribe(loginData => {
+        setTimeout(() => {
+          loading.dismiss();
+          this.navCtrl.setRoot(CompleteProfilePage);
+        }, 1000);
+      }, loginError => {
+        setTimeout(() => {
+          loading.dismiss();
+          this.error = loginError;
+        }, 1000);
+      });
+    }, registerError => {
+      setTimeout(() => {
+        loading.dismiss();
+        this.error = registerError;
+      }, 1000);
+    });
   }
 
 logEvent(event) {

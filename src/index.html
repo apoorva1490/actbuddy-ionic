@@ -40,7 +40,25 @@
 
   <!-- The bundle js is generated during the build process -->
   <script src="build/main.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB16bm5Q_NGgS44Olx3tirwQfQSCZO2gYc",
+    authDomain: "actbuddy-d7544.firebaseapp.com",
+    databaseURL: "https://actbuddy-d7544.firebaseio.com",
+    projectId: "actbuddy-d7544",
+    storageBucket: "actbuddy-d7544.appspot.com",
+    messagingSenderId: "881092106708"
+  };
+
+  firebase.initializeApp(config);
+</script>
 
   <!-- google maps script is loaded last as to not block rendering -->
   <script async defer src="https://maps.googleapis.com/maps/api/js"></script>

@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from 'angularfire2';
 import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
@@ -26,11 +27,15 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { CategoryDetailPage } from '../pages/category-detail/category-detail';
+
+
+//Providers 
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 import { Sports } from '../providers/sports';
+import { AuthProvider } from '../providers/auth';
 
 import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -62,6 +67,15 @@ export function provideSettings(storage: Storage) {
     option4: 'Hello'
   });
 }
+
+  export const firebaseConfig = {
+    apiKey: "AIzaSyB16bm5Q_NGgS44Olx3tirwQfQSCZO2gYc",
+    authDomain: "actbuddy-d7544.firebaseapp.com",
+    databaseURL: "https://actbuddy-d7544.firebaseio.com",
+    projectId: "actbuddy-d7544",
+    storageBucket: "actbuddy-d7544.appspot.com",
+    messagingSenderId: "881092106708"
+  };
 
 
 /**
@@ -113,6 +127,7 @@ export function providers() {
     ConferenceData,
     UserData,
     Sports,
+    AuthProvider,
 
     { provide: Settings, Storage, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
@@ -133,7 +148,8 @@ export function providers() {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),

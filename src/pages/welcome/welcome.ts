@@ -6,7 +6,9 @@ import { SignupPage } from '../signup/signup';
 import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
 import { TranslateService } from '@ngx-translate/core';
-import { SchedulePage } from '../../schedule/schedule'
+import { SchedulePage } from '../../schedule/schedule';
+
+import { AuthProvider } from '../../providers/auth';
 
 
 /**
@@ -20,7 +22,7 @@ import { SchedulePage } from '../../schedule/schedule'
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
-
+  error :any;
 
   // Our translated text strings
   private loginErrorString: string;
@@ -34,7 +36,8 @@ export class WelcomePage {
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    private auth: AuthProvider) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
@@ -59,6 +62,31 @@ export class WelcomePage {
     });
   }
 }
+
+loginUserWithFacebook() {
+    this.auth.loginWithFacebook().subscribe(data => {
+      this.navCtrl.setRoot(MainPage);
+    }, err => {
+      this.error = err;
+    });
+  }
+
+  loginUserWithGoogle() {
+    this.auth.loginUserWithGoogle.subscribe(data => {
+      this.navCtrl.setRoot(MainPage);
+    }, err => {
+      this.error = err;
+    });
+  }
+
+  loginUserWithTwitter() {
+    this.auth.loginUserWithTwitter.subscribe(data => {
+      this.navCtrl.setRoot(MainPage);
+    }, err => {
+      this.error = err;
+    });
+  }
+
 
   signup() {
     this.navCtrl.push(SignupPage);

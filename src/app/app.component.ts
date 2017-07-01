@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CardsPage } from '../pages/cards/cards';
+import { SchedulePage } from '../pages/schedule/schedule';
 import { ContentPage } from '../pages/content/content';
 import { UserDetailPage } from '../pages/user-detail/user-detail';
 import { FirstRunPage } from '../pages/pages';
@@ -27,6 +28,7 @@ import { ConferenceData } from '../providers/conference-data';
 import { MessagesPage } from '../pages/messages/messages';
 
 import { TranslateService } from '@ngx-translate/core'
+import { AuthProvider } from '../providers/auth';
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -51,6 +53,9 @@ export class MyApp {
   rootPage = FirstRunPage;
 
   @ViewChild(Nav) nav: Nav;
+    isAppInitialized: boolean = false;
+  user: any;
+
 
   pages: any[] = [
     { title: 'Tutorial', component: TutorialPage },
@@ -75,7 +80,8 @@ export class MyApp {
   statusBar: StatusBar, 
   splashScreen: SplashScreen,
   public userData: UserData, 
-  public confData: ConferenceData) {
+  public confData: ConferenceData,
+  protected auth: AuthProvider) {
 
     this.initTranslate();
 
@@ -85,6 +91,10 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    this.user = {
+      image: ''
+    };
   }
 
   initTranslate() {
@@ -99,6 +109,21 @@ export class MyApp {
 
     this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
       this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
+    });
+  }
+
+  ngOnInit() {
+    this.platform.ready().then(() => {
+      this.auth.getUserData().subscribe(data => {
+        if (!this.isAppInitialized) {
+          this.nav.setRoot(SchedulePage);
+          this.isAppInitialized = true;
+        }
+        this.user = data;
+      }, err => {
+        this.nav.setRoot(WelcomePage);
+      });
+      StatusBar.styleDefault();
     });
   }
 

@@ -9,6 +9,32 @@ page-welcome {
     animation: animatedBackground 40s linear infinite;
   }
 
+
+ .facebook-btn {
+    background-color: #3b5998;
+    margin: auto;
+    width: 95%;
+    margin-bottom: 5px;
+  }
+
+  .google-btn {
+    background-color: #d34836;
+    margin: auto;
+    width: 95%;
+    margin-bottom: 5px;
+  }
+
+
+  .terms-of-use-txt {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: white;
+  }
+
   @keyframes animatedBackground {
     from { background-position: 0 0; }
     to { background-position: 100% 0; }
